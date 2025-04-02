@@ -1,0 +1,72 @@
+{
+    "common": {
+        "required": "*Required",
+        "registerPage": "Go to Registration Page",
+        "back": "Back",
+        "close": "Close",
+        "resetPasswordLink": "Send to Email Address",
+        "confirm": "Confirm",
+        "resetPassword": "Reset Password",
+        "confirmPasswordTitle": "User authentication is required to proceed. Please re-enter your password.",
+        "forgotPasswordTitle": "Forgot your password? Don't worry.\nEnter your registered email address, and we will send you an email with a link to reset your password.\nFollow the instructions to reset your password."
+    },
+
+    "pages": {
+        "register": {
+            "registerTitle": "New Registration",
+            "inputLabel": {
+                "userName": "Username",
+                "furigana": "Furigana",
+                "phoneNumber": "Phone Number",
+                "postCode": "Postal Code",
+                "address": "Address",
+                "addressDetail": "Detailed Address",
+                "email": "Email Address",
+                "password": "Password",
+                "confirmPassword": "Confirm Password"
+            },
+            "placeholder": {
+                "userName": "Taro Yamada",
+                "userNameKana": "Taro Yamada (Kana)",
+                "phoneNumber": "123-4567-8910",
+                "postCode": "1000104",
+                "address": "Nozo, Oshima-machi, Tokyo",
+                "email": "example@gmail.com"
+            },
+            "uiText": {
+                "alreadyRegistered": "Already registered? Click here",
+                "notUseHyphen": "* Enter 7 consecutive digits without a hyphen (-)",
+                "termsOfUse": "Terms of Use",
+                "privacyPolicy": "Privacy Policy"
+            }
+        },
+
+        "login": {
+            "loginTitle": "Login",
+            "inputLabel": {
+                "email": "Email Address",
+                "password": "Password"
+            },
+            "placeholder": {
+                "email": "example@gmail.com"
+            },
+            "uiText": {
+                "loginBySocial": "Or log in with the options below",
+                "rememberMe": "Remember me",
+                "forgotPassword": "Forgot your password?",
+                "gotoRegister": "Sign Up"
+            }
+        },
+
+        "verifyEmail": {
+            "title": "Thank you for signing up.\nBefore you get started, please click the link sent to your email to verify your email address.\nIf you have not received the email, we can resend it.",
+            "resend": "Resend Email",
+            "verificationLinkSent": "A new verification link has been sent to the email address provided during registration.",
+            "logout": "Log Out"
+        }
+    },
+
+    "validate": {
+        "invalidAddress": "Address could not be found."
+    }
+}
