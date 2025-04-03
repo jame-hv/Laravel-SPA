@@ -42,8 +42,9 @@
         },
 
         "login": {
-            "loginTitle": "ログイン",
-
+            "welcome": "ようこそ",
+            "loginPageTitle": "ログイン",
+            "loginDescription": "アカウントへのログイン",
             "inputLabel": {
                 "email": "メールアドレス",
                 "password": "パスワード"

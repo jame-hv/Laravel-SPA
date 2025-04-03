@@ -6,6 +6,7 @@ import {
   GalleryVerticalEnd,
   Settings2,
   SquareTerminal,
+  Users,
 } from "lucide-react";
 
 export const data = {
@@ -32,6 +33,11 @@ export const data = {
       url: route("dashboard"),
       icon: SquareTerminal,
       isActive: true,
+    },
+    {
+      title: "Users",
+      url: route("users.index"),
+      icon: Users,
     },
     {
       title: "Models",

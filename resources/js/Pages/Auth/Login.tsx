@@ -33,11 +33,9 @@ export default function Login({
 
     const { t } = useTranslation("pages.login");
 
-    console.log(t(".inputLabel.email"));
-
     return (
         <GuestLayout>
-            <Head title="Log in" />
+            <Head title={t(".loginPageTitle")} />
 
             {status && (
                 <div className="mb-4 text-sm font-medium text-green-600">
@@ -52,7 +50,7 @@ export default function Login({
                             <div className="flex flex-col gap-6">
                                 <div className="flex flex-col items-center text-center">
                                     <h1 className="text-2xl font-bold">
-                                        Welcome
+                                        {t(".welcome")}
                                     </h1>
                                     <p className="text-muted-foreground text-balance">
                                         Login to your account
