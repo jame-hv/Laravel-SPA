@@ -1,8 +1,8 @@
 import { useCallback } from "react";
-import { useTranslation as useOriginalTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
-export function useTranslation(scope?: string) {
-  const { t } = useOriginalTranslation();
+export function useLang(scope?: string) {
+  const { t } = useTranslation();
   const translator = useCallback(
     (key: string) => {
       if (key.startsWith(".")) {

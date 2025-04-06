@@ -7,7 +7,7 @@ import {
     SidebarRail,
 } from "@/components/ui/sidebar";
 import { usePage } from "@inertiajs/react";
-import { TeamSwitcher } from "./TeamSwicher";
+import { Company } from "./Company";
 import { NavMain } from "./NavMain";
 import { NavUser } from "./NavUser";
 import { data } from "@/routes";
@@ -17,7 +17,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     return (
         <Sidebar collapsible="icon" {...props}>
             <SidebarHeader>
-                <TeamSwitcher teams={data.teams} />
+                <Company company={data.company} />
             </SidebarHeader>
             <SidebarContent>
                 <NavMain items={data.navMain} />

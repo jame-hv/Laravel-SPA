@@ -1,3 +1,4 @@
+import { useLang } from "@/hooks/use-lang";
 import {
   BookOpen,
   GalleryVerticalEnd,
@@ -6,45 +7,43 @@ import {
 } from "lucide-react";
 
 export const data = {
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-  ],
+  company: {
+    name: "ABC Inc",
+    logo: GalleryVerticalEnd,
+    plan: "Enterprise",
+  },
   navMain: [
     {
-      title: "Dashboard",
+      title: ".dashboard",
       url: route("dashboard"),
       icon: SquareTerminal,
       isActive: true,
     },
     {
-      title: "Users",
+      title: ".users",
       url: route("users.index"),
       icon: User,
     },
 
     {
-      title: "Documentation",
+      title: ".documentation.title",
       url: "#",
       icon: BookOpen,
       items: [
         {
-          title: "Introduction",
+          title: ".documentation.intro",
           url: "#",
         },
         {
-          title: "Get Started",
+          title: ".documentation.installation",
           url: "#",
         },
         {
-          title: "Tutorials",
+          title: ".documentation.manual",
           url: "#",
         },
         {
-          title: "Changelog",
+          title: ".documentation.changelog",
           url: "#",
         },
       ],

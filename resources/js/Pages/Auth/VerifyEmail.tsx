@@ -1,7 +1,11 @@
-import PrimaryButton from '@/Components/PrimaryButton';
-import GuestLayout from '@/Layouts/GuestLayout';
-import { Head, Link, useForm } from '@inertiajs/react';
-import { FormEventHandler } from 'react';
+import PrimaryButton from "@/Components/PrimaryButton";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { useLang } from "@/hooks/use-lang";
+import GuestLayout from "@/Layouts/GuestLayout";
+import { cn } from "@/lib/utils";
+import { Head, Link, useForm } from "@inertiajs/react";
+import { FormEventHandler } from "react";
 
 export default function VerifyEmail({ status }: { status?: string }) {
     const { post, processing } = useForm({});
@@ -9,43 +13,49 @@ export default function VerifyEmail({ status }: { status?: string }) {
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
 
-        post(route('verification.send'));
+        post(route("verification.send"));
     };
+
+    const { t } = useLang("pages.verifyEmail");
 
     return (
         <GuestLayout>
-            <Head title="Email Verification" />
+            <Head title={t(".pageTitle")} />
 
-            <div className="mb-4 text-sm text-gray-600">
-                Thanks for signing up! Before getting started, could you verify
-                your email address by clicking on the link we just emailed to
-                you? If you didn't receive the email, we will gladly send you
-                another.
+            <div className={cn("flex flex-col gap-6")}>
+                <Card className="overflow-hidden p-0">
+                    <CardContent className="grid p-0 ">
+                        <div className="p-6 md:p-8">
+                            <div className="mb-4 text-sm text-gray-600">
+                                {t(".description")}
+                            </div>
+
+                            {status === "verification-link-sent" && (
+                                <div className="mb-4 text-sm font-medium text-green-600">
+                                    {t(".verificationLinkSent")}
+                                </div>
+                            )}
+
+                            <form onSubmit={submit}>
+                                <div className="mt-4 flex items-center justify-between">
+                                    <Button type="submit" disabled={processing}>
+                                        {t(".resendButton")}
+                                    </Button>
+
+                                    <Link
+                                        href={route("logout")}
+                                        method="post"
+                                        as="button"
+                                        className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                    >
+                                        {t(".logout")}
+                                    </Link>
+                                </div>
+                            </form>
+                        </div>
+                    </CardContent>
+                </Card>
             </div>
-
-            {status === 'verification-link-sent' && (
-                <div className="mb-4 text-sm font-medium text-green-600">
-                    A new verification link has been sent to the email address
-                    you provided during registration.
-                </div>
-            )}
-
-            <form onSubmit={submit}>
-                <div className="mt-4 flex items-center justify-between">
-                    <PrimaryButton disabled={processing}>
-                        Resend Verification Email
-                    </PrimaryButton>
-
-                    <Link
-                        href={route('logout')}
-                        method="post"
-                        as="button"
-                        className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                    >
-                        Log Out
-                    </Link>
-                </div>
-            </form>
         </GuestLayout>
     );
 }

@@ -8,12 +8,17 @@
         "confirm": "確認",
         "resetPassword": "パスワード再発行",
         "confirmPasswordTitle": "次に進めるため、ユーザー認証必要があります。パスワードを最確認してください",
-        "forgotPasswordTitle": "パスワードをお忘れですか？心配しないでください。\n登録したメールアドレスを入力して、パスワード再発行のリンク先を含む案内メールが届きます。\n案内通りに進めばパスワードが再発行されます。"
+        "forgotPasswordTitle": "パスワードをお忘れですか？心配しないでください。\n登録したメールアドレスを入力して、パスワード再発行のリンク先を含む案内メールが届きます。\n案内通りに進めばパスワードが再発行されます。",
+        "and": "および"
     },
 
     "pages": {
+        "home": {
+            "login": "ログイン",
+            "register": "新規登録"
+        },
         "register": {
-            "registerTitle": "新規登録",
+            "pageTitle": "新規登録",
             "inputLabel": {
                 "userName": "ユーザー名",
                 "furigana": "フリガナ",
@@ -31,19 +36,25 @@
                 "phoneNumber": "123-4567-8910",
                 "postCode": "1000104",
                 "address": "東京都 大島町 野増",
-                "email": "example@gmail.com"
+                "email": "example@gmail.com",
+                "name": "山田 太郎"
             },
             "uiText": {
                 "alreadyRegistered": "既に登録した方はこちらへ",
                 "notUseHyphen": "※ 連続７数字で、ハイフン(ー)なし",
+                "haveAccount": "既にアカウントをお持ちの方は",
+                "loginLink": "ログイン",
+                "signUp": "登録する",
                 "termsOfUse": "利用規約",
-                "privacyPolicy": "プライバシーポリシー"
+                "privacyPolicy": "プライバシーポリシー",
+                "agreeToTerms": "続行をクリックすることで、",
+                "and": "および",
+                "agreeToTermsEnd": "に同意したことになります。"
             }
         },
-
         "login": {
-            "loginTitle": "ログイン",
-
+            "pageTitle": "ログイン",
+            "loginDescription": "アカウント情報を入力してください",
             "inputLabel": {
                 "email": "メールアドレス",
                 "password": "パスワード"
@@ -55,7 +66,99 @@
                 "loginBySocial": "または、以下でログイン",
                 "rememberMe": "ログイン状態を保存する",
                 "forgotPassword": "パスワードをお忘れですか？",
-                "gotoRegister": "新規登録"
+                "dontHaveAccount": "アカウントをお持ちでない方は",
+                "gotoRegister": "無料登録",
+                "termsOfUse": "利用規約",
+                "privacyPolicy": "プライバシーポリシー",
+                "agreeToTerms": "続行をクリックすることで、",
+                "and": "および",
+                "agreeToTermsEnd": "に同意したことになります。"
+            },
+            "button": {
+                "login": "ログイン",
+                "loginWithGoogle": "Googleでログイン",
+                "loginWithFacebook": "Facebookでログイン"
+            }
+        },
+        "confirmPassword": {
+            "pageTitle": "パスワード確認",
+            "description": "これは安全な領域です。続行する前にパスワードを確認してください。",
+            "passwordLabel": "パスワード",
+            "confirmButton": "確認",
+            "inputLabel": {
+                "password": "パスワード"
+            },
+            "placeholder": {
+                "password": "パスワード"
+            },
+            "uiText": {},
+            "button": {
+                "confirmPassword": "確認"
+            }
+        },
+
+        "dashboard": {
+            "pageTitle": "ダッシュボード",
+            "totalUsers": "ユーザー数",
+            "fromLastMonth": "先月から",
+            "userGrowth": "ユーザー増加率",
+            "userGrowthDescription": "時間経過によるユーザー数",
+            "activitiesChart": {
+                "title": "訪問者数",
+                "description": "最終３ヶ月の訪問者数",
+                "label": {
+                    "desktop": "デスクトップ",
+                    "mobile": "モバイル"
+                },
+                "timeRange": {
+                    "last3Months": "最終３ヶ月",
+                    "last30Days": "最終30日",
+                    "last7Days": "最終7日"
+                }
+            }
+        },
+        "profile": {
+            "pageTitle": "プロフィール",
+            "updateInfo": {
+                "title": "プロフィール情報",
+                "description": "アカウントの異パン情報を更新する",
+                "inputLabel": {
+                    "userName": "ユーザー名",
+                    "furigana": "フリガナ",
+                    "phoneNumber": "電話番号",
+                    "postCode": "郵便番号",
+                    "address": "住所",
+                    "addressDetail": "詳細住所",
+                    "email": "メールアドレス"
+                },
+                "verifyEmail": {
+                    "warning": "メールアドレスの認証必要があります",
+                    "desiredAction": "こちらをクリックして、メールアドレスを認証してください。",
+                    "verificationLinkSent": "メールアドレス認証のリンクが送信されました。メールを確認してください。"
+                },
+                "button": {
+                    "save": "保存",
+                    "saved": "保存しました"
+                }
+            },
+            "updatePasswordForm": {
+                "title": "パスワード変更",
+                "description": "セキュリティを確保するため、長くてランダムなパスワードを使用してください。",
+                "currentPassword": "現在のパスワード",
+                "newPassword": "新しいパスワード",
+                "confirmPassword": "パスワード確認用",
+                "button": {
+                    "save": "保存"
+                },
+                "saved": "保存しました"
+            },
+            "deleteUserForm": {
+                "title": "アカウント削除",
+                "description": "アカウントを削除すると、すべてのデータが失われます。続行する前に、すべてのデータをバックアップしてください。",
+                "button": {
+                    "deleteAccount": "アカウント削除"
+                },
+                "deleted": "アカウントが削除されました。"
             }
         },
 
@@ -63,6 +166,108 @@
             "title": "サインアップありがとうございます。\n始める前に、弊社から送信されたリンクをクリックして、メールアドレスを確認してください。\nもしメールが届かない場合は、再送させていただきます。",
             "resend": "メールを再送信する",
             "verificationLinkSent": "新しい確認リンクが、登録時に提供されたメールアドレスに送信されました。",
+            "logout": "ログアウト",
+            "pageTitle": "メール認証",
+            "description": "サインアップありがとうございます。始める前に、弊社から送信されたリンクをクリックして、メールアドレスを確認してください。もしメールが届かない場合は、再送させていただきます。",
+            "resendButton": "確認メールを再送信"
+        },
+        "forgotPassword": {
+            "pageTitle": "パスワードをお忘れですか？",
+            "description": "パスワードをお忘れですか？メールアドレスをご入力いただければ、新しいパスワードを設定するためのリンクをお送りします。",
+            "emailLabel": "メールアドレス",
+            "resetButton": "パスワードリセットリンクを送信",
+            "terms": {
+                "agreement": "続行をクリックすることで、",
+                "termsOfService": "利用規約",
+                "and": "および",
+                "privacyPolicy": "プライバシーポリシー",
+                "agreementEnd": "に同意したことになります。"
+            }
+        },
+        "resetPassword": {
+            "pageTitle": "パスワード再発行",
+            "description": "新しいパスワードを設定してください。",
+            "inputLabel": {
+                "email": "メールアドレス",
+                "password": "新しいパスワード",
+                "confirmPassword": "新しいパスワード確認用"
+            },
+            "placeholder": {
+                "password": "新しいパスワード",
+                "confirmPassword": "新しいパスワード確認用"
+            },
+            "uiText": {
+                "resetPasswordSuccess": "パスワードが正常にリセットされました。ログインしてください。"
+            }
+        },
+        "users": {
+            "pageTitle": "ユーザー",
+            "description": "ユーザーの管理",
+            "table": {
+                "userName": "ユーザー名",
+                "email": "メールアドレス",
+                "phoneNumber": "電話番号",
+                "createdAt": "登録日",
+                "updatedAt": "更新日",
+                "actions": "操作"
+            },
+            "button": {
+                "addUser": "ユーザー追加",
+                "edit": "編集",
+                "delete": "削除"
+            },
+            "dialog": {
+                "createUser": "ユーザー作成",
+                "deleteConfirm": "このユーザーを削除してもよろしいですか？"
+            },
+            "userForm": {
+                "pageTitle": "ユーザー編集",
+                "inputLabel": {
+                    "userName": "ユーザー名",
+                    "furigana": "フリガナ",
+                    "phoneNumber": "電話番号",
+                    "postCode": "郵便番号",
+                    "address": "住所",
+                    "addressDetail": "詳細住所",
+                    "email": "メールアドレス",
+                    "password": "パスワード",
+                    "confirmPassword": "パスワード確認用"
+                },
+                "leaveBlankText": "現在のパスワードを使用する場合は空白のままにしてください",
+                "save": "保存",
+                "saving": "保存中..."
+            },
+            "message": {
+                "createSuccess": "ユーザーが正常に作成されました。",
+                "updateSuccess": "ユーザー情報が正常に更新されました。",
+                "deleteSuccess": "ユーザーが正常に削除されました。"
+            }
+        }
+    },
+    "sidebar": {
+        "company": {
+            "companyInfo": "企業情報",
+            "home": "ホーム"
+        },
+        "groupLabel": {
+            "general": "一般"
+        },
+        "navMain": {
+            "dashboard": "ダッシュボード",
+            "users": "ユーザー",
+            "documentation": {
+                "title": "ドキュメント",
+                "intro": "はじめに",
+                "installation": "インストール",
+                "manual": "マニュアル",
+                "changelog": "変更履歴"
+            }
+        },
+        "navUser": {
+            "upgrade": "Pro にアップグレード",
+            "profile": "プロフィール",
+            "billing": "請求",
+            "notifications": "通知",
             "logout": "ログアウト"
         }
     },

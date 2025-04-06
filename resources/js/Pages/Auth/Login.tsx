@@ -6,9 +6,8 @@ import { Label } from "@/components/ui/label";
 import GuestLayout from "@/Layouts/GuestLayout";
 import { Head, useForm, usePage } from "@inertiajs/react";
 import { FormEventHandler } from "react";
-import { Loader } from "lucide-react";
 import InputError from "@/Components/InputError";
-import { useTranslation } from "@/hooks/use-translation";
+import { useLang } from "@/hooks/use-lang";
 
 export default function Login({
     status,
@@ -31,13 +30,11 @@ export default function Login({
         });
     };
 
-    const { t } = useTranslation("pages.login");
-
-    console.log(t(".inputLabel.email"));
+    const { t } = useLang("pages.login");
 
     return (
         <GuestLayout>
-            <Head title="Log in" />
+            <Head title={t(".pageTitle")} />
 
             {status && (
                 <div className="mb-4 text-sm font-medium text-green-600">
@@ -52,19 +49,18 @@ export default function Login({
                             <div className="flex flex-col gap-6">
                                 <div className="flex flex-col items-center text-center">
                                     <h1 className="text-2xl font-bold">
-                                        Welcome
+                                        {t(".pageTitle")}
                                     </h1>
-                                    <p className="text-muted-foreground text-balance">
-                                        Login to your account
-                                    </p>
                                 </div>
                                 <div className="grid gap-3">
-                                    <Label htmlFor="email">Email</Label>
+                                    <Label htmlFor="email">
+                                        {t(".inputLabel.email")}
+                                    </Label>
                                     <Input
                                         id="email"
                                         type="email"
                                         name="email"
-                                        placeholder="m@example.com"
+                                        placeholder={t(".placeholder.email")}
                                         required
                                         autoFocus
                                         autoComplete="email"
@@ -75,19 +71,19 @@ export default function Login({
                                     />
                                     <InputError
                                         message={errors.email}
-                                        className="mt-2"
+                                        className="mt-2 text-xs"
                                     />
                                 </div>
                                 <div className="grid gap-3">
                                     <div className="flex items-center">
                                         <Label htmlFor="password">
-                                            Password
+                                            {t(".inputLabel.password")}
                                         </Label>
                                         <a
                                             href={route("password.request")}
-                                            className="ml-auto text-sm underline-offset-2 hover:underline"
+                                            className="ml-auto text-xs underline-offset-2 hover:underline hover:text-blue-500"
                                         >
-                                            Forgot your password?
+                                            {t(".uiText.forgotPassword")}
                                         </a>
                                     </div>
                                     <Input
@@ -103,12 +99,15 @@ export default function Login({
                                     />
                                     <InputError
                                         message={errors.password}
-                                        className="mt-2"
+                                        className="mt-2 text-xs"
                                     />
                                 </div>
-                                <Button type="submit" className="w-full">
-                                    {processing && <Loader />}
-                                    Login
+                                <Button
+                                    type="submit"
+                                    className="w-full"
+                                    disabled={processing}
+                                >
+                                    {t(".button.login")}
                                 </Button>
                                 {/* Socialite Login-------------------------------------------- */}
                                 {/* <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
@@ -172,13 +171,13 @@ export default function Login({
                                         </span>
                                     </Button>
                                 </div> */}
-                                <div className="text-center text-sm">
-                                    Don&apos;t have an account?{" "}
+                                <div className="text-center text-xs">
+                                    {t(".uiText.dontHaveAccount")}{" "}
                                     <a
                                         href={route("register")}
-                                        className="underline underline-offset-4"
+                                        className="underline underline-offset-4 hover:text-blue-500"
                                     >
-                                        Sign up
+                                        {t(".uiText.gotoRegister")}
                                     </a>
                                 </div>
                             </div>
@@ -193,9 +192,10 @@ export default function Login({
                     </CardContent>
                 </Card>
                 <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-                    By clicking continue, you agree to our{" "}
-                    <a href="#">Terms of Service</a> and{" "}
-                    <a href="#">Privacy Policy</a>.
+                    {t(".uiText.agreeToTerms")}{" "}
+                    <a href="#">{t(".uiText.termsOfUse")}</a> {t(".uiText.and")}{" "}
+                    <a href="#">{t(".uiText.privacyPolicy")}</a>
+                    {t(".uiText.agreeToTermsEnd")}
                 </div>
             </div>
         </GuestLayout>

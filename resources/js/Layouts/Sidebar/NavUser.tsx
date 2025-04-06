@@ -1,5 +1,3 @@
-"use client";
-
 import {
     BadgeCheck,
     Bell,
@@ -26,6 +24,7 @@ import {
     useSidebar,
 } from "@/components/ui/sidebar";
 import { Link } from "@inertiajs/react";
+import { useLang } from "@/hooks/use-lang";
 
 export function NavUser({
     user,
@@ -38,6 +37,7 @@ export function NavUser({
 }) {
     const { isMobile } = useSidebar();
 
+    const { t } = useLang("sidebar.navUser");
     return (
         <SidebarMenu>
             <SidebarMenuItem>
@@ -94,7 +94,7 @@ export function NavUser({
                         <DropdownMenuGroup>
                             <DropdownMenuItem>
                                 <Sparkles />
-                                Upgrade to Pro
+                                {t(".upgrade")}
                             </DropdownMenuItem>
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />
@@ -102,23 +102,23 @@ export function NavUser({
                             <Link href={route("profile.edit")}>
                                 <DropdownMenuItem>
                                     <BadgeCheck />
-                                    Profile
+                                    {t(".profile")}
                                 </DropdownMenuItem>
                             </Link>
                             <DropdownMenuItem>
                                 <CreditCard />
-                                Billing
+                                {t(".billing")}
                             </DropdownMenuItem>
                             <DropdownMenuItem>
                                 <Bell />
-                                Notifications
+                                {t(".notifications")}
                             </DropdownMenuItem>
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />
                         <Link href={route("logout")} method="post">
                             <DropdownMenuItem>
                                 <LogOut />
-                                Log out
+                                {t(".logout")}
                             </DropdownMenuItem>
                         </Link>
                     </DropdownMenuContent>
