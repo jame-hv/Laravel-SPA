@@ -5,6 +5,7 @@ import type { User } from "@/types/models";
 import type { Pagination } from "@/types/pagination";
 import { Link, router, usePage } from "@inertiajs/react";
 import { useState } from "react";
+import { useLang } from "@/hooks/use-lang";
 
 interface Props {
     users: Pagination<User>;
@@ -12,10 +13,11 @@ interface Props {
 
 const UserTable = ({ users }: Props) => {
     const [deletingId, setDeletingId] = useState<number | null>(null);
+    const { t } = useLang("pages.users");
 
     const handleDelete = (userId: number) => {
         setDeletingId(userId);
-        if (confirm("Are you sure you want to delete this user?")) {
+        if (confirm(t(".dialog.deleteConfirm"))) {
             router.delete(route("users.destroy", { user: userId }));
         }
     };
@@ -29,7 +31,7 @@ const UserTable = ({ users }: Props) => {
                     router.get(route("users.edit", { user: user.id }));
                 }}
             >
-                Edit
+                {t(".button.edit")}
             </Button>
             <Button
                 variant="link"
@@ -39,7 +41,7 @@ const UserTable = ({ users }: Props) => {
                     handleDelete(user.id);
                 }}
             >
-                Delete
+                {t(".button.delete")}
             </Button>
         </div>
     );
@@ -52,16 +54,16 @@ const UserTable = ({ users }: Props) => {
                     <thead>
                         <tr>
                             <th className="h-8 px-4 text-left align-middle">
-                                Name
+                                {t(".table.userName")}
                             </th>
                             <th className="h-8 px-4 text-left align-middle">
-                                Email
+                                {t(".table.email")}
                             </th>
                             <th className="h-8 px-4 text-left align-middle">
-                                Created At
+                                {t(".table.createdAt")}
                             </th>
                             <th className="h-8 px-4 text-left align-middle">
-                                Actions
+                                {t(".table.actions")}
                             </th>
                         </tr>
                     </thead>
@@ -93,13 +95,13 @@ const UserTable = ({ users }: Props) => {
                             <div className="space-y-2">
                                 <div className="grid grid-cols-2 gap-1">
                                     <span className="font-medium text-muted-foreground">
-                                        Name:
+                                        {t(".table.userName")}:
                                     </span>
                                     <span>{user.name}</span>
                                 </div>
                                 <div className="grid grid-cols-2 gap-1">
                                     <span className="font-medium text-muted-foreground">
-                                        Email:
+                                        {t(".table.email")}:
                                     </span>
                                     <span className="break-all">
                                         {user.email}
@@ -107,7 +109,7 @@ const UserTable = ({ users }: Props) => {
                                 </div>
                                 <div className="grid grid-cols-2 gap-1">
                                     <span className="font-medium text-muted-foreground">
-                                        Created:
+                                        {t(".table.createdAt")}:
                                     </span>
                                     <span>{user.created_at}</span>
                                 </div>

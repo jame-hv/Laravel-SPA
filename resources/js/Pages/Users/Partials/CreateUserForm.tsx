@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useLang } from "@/hooks/use-lang";
 import { useForm } from "@inertiajs/react";
 import { FormEventHandler } from "react";
 
@@ -26,10 +27,12 @@ const CreateUserForm = ({ setIsOpen }: Props) => {
         });
     };
 
+    const { t } = useLang("pages.users.userForm");
+
     return (
         <form onSubmit={submit} className="space-y-4">
             <div className="flex flex-col gap-4">
-                <Label htmlFor="name">Name</Label>
+                <Label htmlFor="name">{t(".inputLabel.userName")}</Label>
                 <Input
                     id="name"
                     type="text"
@@ -43,7 +46,7 @@ const CreateUserForm = ({ setIsOpen }: Props) => {
             </div>
 
             <div className="flex flex-col gap-4">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">{t(".inputLabel.email")}</Label>
                 <Input
                     id="email"
                     type="email"
@@ -57,7 +60,7 @@ const CreateUserForm = ({ setIsOpen }: Props) => {
             </div>
 
             <div className="flex flex-col gap-4">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">{t(".inputLabel.password")}</Label>
                 <Input
                     id="password"
                     type="password"
@@ -73,7 +76,9 @@ const CreateUserForm = ({ setIsOpen }: Props) => {
             </div>
 
             <div className="flex flex-col gap-4">
-                <Label htmlFor="password_confirmation">Confirm Password</Label>
+                <Label htmlFor="password_confirmation">
+                    {t(".inputLabel.confirmPassword")}
+                </Label>
                 <Input
                     id="password_confirmation"
                     type="password"
@@ -86,7 +91,7 @@ const CreateUserForm = ({ setIsOpen }: Props) => {
             </div>
 
             <Button type="submit" disabled={processing}>
-                Create User
+                {t("pages.users.button.addUser")}
             </Button>
         </form>
     );

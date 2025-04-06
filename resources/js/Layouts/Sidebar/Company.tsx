@@ -16,23 +16,21 @@ import {
     SidebarMenuItem,
     useSidebar,
 } from "@/components/ui/sidebar";
+import { Link } from "@inertiajs/react";
+import { useLang } from "@/hooks/use-lang";
 
-export function TeamSwitcher({
-    teams,
+export function Company({
+    company,
 }: {
-    teams: {
+    company: {
         name: string;
         logo: React.ElementType;
         plan: string;
-    }[];
+    };
 }) {
     const { isMobile } = useSidebar();
-    const [activeTeam, setActiveTeam] = React.useState(teams[0]);
 
-    if (!activeTeam) {
-        return null;
-    }
-
+    const { t } = useLang("sidebar.company");
     return (
         <SidebarMenu>
             <SidebarMenuItem>
@@ -44,14 +42,14 @@ export function TeamSwitcher({
                                 className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                             >
                                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                                    <activeTeam.logo className="size-4" />
+                                    <company.logo className="size-4" />
                                 </div>
                                 <div className="grid flex-1 text-left text-sm leading-tight">
                                     <span className="truncate font-medium">
-                                        {activeTeam.name}
+                                        {company.name}
                                     </span>
                                     <span className="truncate text-xs">
-                                        {activeTeam.plan}
+                                        {company.plan}
                                     </span>
                                 </div>
                                 <ChevronsUpDown className="ml-auto" />
@@ -65,31 +63,12 @@ export function TeamSwitcher({
                         sideOffset={4}
                     >
                         <DropdownMenuLabel className="text-muted-foreground text-xs">
-                            Teams
+                            {t(".companyInfo")}
                         </DropdownMenuLabel>
-                        {teams.map((team, index) => (
-                            <DropdownMenuItem
-                                key={team.name}
-                                onClick={() => setActiveTeam(team)}
-                                className="gap-2 p-2"
-                            >
-                                <div className="flex size-6 items-center justify-center rounded-md border">
-                                    <team.logo className="size-3.5 shrink-0" />
-                                </div>
-                                {team.name}
-                                <DropdownMenuShortcut>
-                                    ⌘{index + 1}
-                                </DropdownMenuShortcut>
-                            </DropdownMenuItem>
-                        ))}
+
                         <DropdownMenuSeparator />
                         <DropdownMenuItem className="gap-2 p-2">
-                            <div className="flex size-6 items-center justify-center rounded-md border bg-transparent">
-                                <Plus className="size-4" />
-                            </div>
-                            <div className="text-muted-foreground font-medium">
-                                Add team
-                            </div>
+                            <Link href="/">{t(".home")}</Link>
                         </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>

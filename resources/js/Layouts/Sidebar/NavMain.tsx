@@ -17,7 +17,7 @@ import {
     SidebarMenuSubButton,
     SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import { Link } from "@inertiajs/react";
+import { useLang } from "@/hooks/use-lang";
 
 export function NavMain({
     items,
@@ -33,9 +33,12 @@ export function NavMain({
         }[];
     }[];
 }) {
+    const { t } = useLang("sidebar.navMain");
     return (
         <SidebarGroup>
-            <SidebarGroupLabel>Platform</SidebarGroupLabel>
+            <SidebarGroupLabel>
+                {t("sidebar.groupLabel.general")}
+            </SidebarGroupLabel>
             <SidebarMenu>
                 {items.map((item) => (
                     <Collapsible
@@ -50,7 +53,7 @@ export function NavMain({
                                     <a href={item.url}>
                                         <SidebarMenuButton tooltip={item.title}>
                                             {item.icon && <item.icon />}
-                                            <span>{item.title}</span>
+                                            <span>{t(item.title)}</span>
                                             {item.items ? (
                                                 <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                                             ) : null}
@@ -68,7 +71,7 @@ export function NavMain({
                                                 <SidebarMenuSubButton asChild>
                                                     <a href={subItem.url}>
                                                         <span>
-                                                            {subItem.title}
+                                                            {t(subItem.title)}
                                                         </span>
                                                     </a>
                                                 </SidebarMenuSubButton>

@@ -16,19 +16,11 @@ Fixes # (issue)
 
 Please describe the tests that you ran to verify your changes. Include details about your testing environment (e.g., local development, staging, production), the specific tests that were performed, and the results.
 
--   [ ] Test A
--   [ ] Test B
--   [ ] Test C
+-   [ ] Test Name
 
 ## Checklist
 
--   [ ] My code follows the code style of this project.
--   [ ] I have performed a self-review of my own code.
--   [ ] I have commented my code, especially in hard-to-understand areas.
--   [ ] I have made corresponding changes to the documentation (if applicable).
--   [ ] My changes generate no new warnings.
--   [ ] I have added tests that prove my fix is effective or that my feature works.
--   [ ] I have run the tests and all of them passed.
+-   [ ] My code follows the code standard of this project.
 
 ## Screenshots (if applicable)
 

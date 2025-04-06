@@ -15,7 +15,7 @@ import {
 import { ThemeProvider } from "@/components/theme-provider";
 import { Head, Link, usePage } from "@inertiajs/react";
 import { PropsWithChildren, ReactNode, useState } from "react";
-import { AppSidebar } from "@/Components/AppSidebar";
+import { AppSidebar } from "@/Layouts/Sidebar/AppSidebar";
 import { ModeToggle } from "@/components/mode-toggle";
 
 export default function Authenticated({

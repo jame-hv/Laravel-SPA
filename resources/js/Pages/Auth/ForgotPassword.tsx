@@ -4,10 +4,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import GuestLayout from "@/Layouts/GuestLayout";
-import { Head, Link, useForm } from "@inertiajs/react";
-
+import { Head, useForm } from "@inertiajs/react";
 import { FormEventHandler } from "react";
 import InputError from "@/Components/InputError";
+import { useLang } from "@/hooks/use-lang";
+
 export default function ForgotPassword({ status }: { status?: string }) {
     const { data, setData, post, processing, errors } = useForm({
         email: "",
@@ -15,18 +16,17 @@ export default function ForgotPassword({ status }: { status?: string }) {
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
-
         post(route("password.email"));
     };
 
+    const { t } = useLang("pages.forgotPassword");
+
     return (
         <GuestLayout>
-            <Head title="Forgot Password" />
+            <Head title={t(".pageTitle")} />
 
             <div className="mb-4 text-sm text-gray-600">
-                Forgot your password? No problem. Just let us know your email
-                address and we will email you a password reset link that will
-                allow you to choose a new one.
+                {t(".description")}
             </div>
 
             {status && (
@@ -41,7 +41,9 @@ export default function ForgotPassword({ status }: { status?: string }) {
                         <form onSubmit={submit} className="p-6 md:p-8">
                             <div className="flex flex-col gap-6">
                                 <div className="grid gap-3">
-                                    <Label htmlFor="email">Email</Label>
+                                    <Label htmlFor="email">
+                                        {t(".emailLabel")}
+                                    </Label>
                                     <Input
                                         id="email"
                                         type="email"
@@ -59,12 +61,12 @@ export default function ForgotPassword({ status }: { status?: string }) {
                                         className="mt-2"
                                     />
                                 </div>
-                                <div className="mt-4 flex items-center justify-end">
+                                <div className=" flex items-center justify-end">
                                     <Button
                                         className="ms-4"
                                         disabled={processing}
                                     >
-                                        Email Password Reset Link
+                                        {t(".resetButton")}
                                     </Button>
                                 </div>
                             </div>
@@ -72,9 +74,11 @@ export default function ForgotPassword({ status }: { status?: string }) {
                     </CardContent>
                 </Card>
                 <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-                    By clicking continue, you agree to our{" "}
-                    <a href="#">Terms of Service</a> and{" "}
-                    <a href="#">Privacy Policy</a>.
+                    {t(".terms.agreement")}{" "}
+                    <a href="#">{t(".terms.termsOfService")}</a>{" "}
+                    {t(".terms.and")}{" "}
+                    <a href="#">{t(".terms.privacyPolicy")}</a>
+                    {t(".terms.agreementEnd")}
                 </div>
             </div>
         </GuestLayout>

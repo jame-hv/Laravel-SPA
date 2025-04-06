@@ -14,6 +14,7 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog";
 import CreateUserForm from "./Partials/CreateUserForm";
+import { useLang } from "@/hooks/use-lang";
 
 interface Props extends PageProps {
     users: Pagination<User>;
@@ -21,14 +22,16 @@ interface Props extends PageProps {
 
 const Index = ({ auth, users, success }: Props) => {
     const [isOpen, setIsOpen] = useState(false);
-
+    const { t } = useLang("pages.users");
     return (
         <Authenticated
             header={
-                <h2 className="text-xl font-semibold leading-tight">Users</h2>
+                <h2 className="text-xl font-semibold leading-tight">
+                    {t(".pageTitle")}
+                </h2>
             }
         >
-            <Head title="Users" />
+            <Head title={t(".pageTitle")} />
 
             <div className="py-2">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
@@ -36,12 +39,12 @@ const Index = ({ auth, users, success }: Props) => {
                         <Dialog open={isOpen} onOpenChange={setIsOpen}>
                             <div>
                                 <DialogTrigger asChild>
-                                    <Button>Create User</Button>
+                                    <Button> {t(".button.addUser")}</Button>
                                 </DialogTrigger>
                                 <DialogContent>
                                     <DialogHeader>
                                         <DialogTitle>
-                                            Create New User
+                                            {t(".dialog.createUser")}
                                         </DialogTitle>
                                     </DialogHeader>
                                     <CreateUserForm setIsOpen={setIsOpen} />

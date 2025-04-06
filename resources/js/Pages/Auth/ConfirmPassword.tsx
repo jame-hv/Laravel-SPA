@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useLang } from "@/hooks/use-lang";
 import GuestLayout from "@/Layouts/GuestLayout";
 import { cn } from "@/lib/utils";
 import { Head, useForm } from "@inertiajs/react";
@@ -21,13 +22,14 @@ export default function ConfirmPassword() {
         });
     };
 
+    const { t } = useLang("pages.confirmPassword");
+
     return (
         <GuestLayout>
-            <Head title="Confirm Password" />
+            <Head title={t(".pageTitle")} />
 
             <div className="mb-4 text-sm text-gray-600">
-                This is a secure area of the application. Please confirm your
-                password before continuing.
+                {t(".description")}
             </div>
 
             <div className={cn("flex flex-col gap-6")}>
@@ -36,7 +38,9 @@ export default function ConfirmPassword() {
                         <form onSubmit={submit} className="p-6 md:p-8">
                             <div className="flex flex-col gap-6">
                                 <div className="grid gap-3">
-                                    <Label htmlFor="password">Password</Label>
+                                    <Label htmlFor="password">
+                                        {t(".passwordLabel")}
+                                    </Label>
                                     <Input
                                         id="password"
                                         type="password"
@@ -54,12 +58,12 @@ export default function ConfirmPassword() {
                                         className="mt-2"
                                     />
                                 </div>
-                                <div className="mt-4 flex items-center justify-end">
+                                <div className="mt-2 flex items-center justify-end">
                                     <Button
                                         className="ms-4"
                                         disabled={processing}
                                     >
-                                        Confirm
+                                        {t(".confirmButton")}
                                     </Button>
                                 </div>
                             </div>

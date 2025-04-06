@@ -6,6 +6,7 @@ import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { PageProps } from "@/types";
 import { Head, router, useForm } from "@inertiajs/react";
 import { FormEventHandler } from "react";
+import { useLang } from "@/hooks/use-lang";
 
 interface User {
     id: number;
@@ -28,21 +29,26 @@ const Edit = ({ user }: PageProps<{ user: User }>) => {
             onFinish: () => reset("password", "password_confirmation"),
         });
     };
+
+    const { t } = useLang("pages.users.userForm");
+
     return (
         <Authenticated
             header={
                 <h2 className="text-xl font-semibold leading-tight">
-                    Edit User
+                    {t(".pageTitle")}
                 </h2>
             }
         >
-            <Head title="Edit User" />
+            <Head title={t(".pageTitle")} />
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px:6 lg:px-8">
                     <form onSubmit={submit} className="space-y-6">
                         <div className="flex flex-col gap-4">
-                            <Label htmlFor="name">Name</Label>
+                            <Label htmlFor="name">
+                                {t(".inputLabel.userName")}
+                            </Label>
                             <Input
                                 id="name"
                                 type="text"
@@ -60,7 +66,9 @@ const Edit = ({ user }: PageProps<{ user: User }>) => {
                         </div>
 
                         <div className="flex flex-col gap-4">
-                            <Label htmlFor="email">Email</Label>
+                            <Label htmlFor="email">
+                                {t(".inputLabel.email")}
+                            </Label>
                             <Input
                                 id="email"
                                 type="email"
@@ -76,9 +84,11 @@ const Edit = ({ user }: PageProps<{ user: User }>) => {
                                 className="mt-2"
                             />
                         </div>
+
                         <div className="flex flex-col gap-4">
                             <Label htmlFor="password">
-                                Password (leave blank to use current password)
+                                {t(".inputLabel.password")} (
+                                {t(".leaveBlankText")})
                             </Label>
                             <Input
                                 id="password"
@@ -97,7 +107,7 @@ const Edit = ({ user }: PageProps<{ user: User }>) => {
                         </div>
                         <div className="flex flex-col gap-4">
                             <Label htmlFor="password_confirmation">
-                                Confirm Password
+                                {t(".inputLabel.confirmPassword")}
                             </Label>
                             <Input
                                 id="password_confirmation"
@@ -126,7 +136,7 @@ const Edit = ({ user }: PageProps<{ user: User }>) => {
                                 disabled={processing}
                                 className={`btn ${processing ? "loading" : ""}`}
                             >
-                                {processing ? "Saving..." : "Save"}
+                                {processing ? t(".saving") : t(".save")}
                             </Button>
                         </div>
                     </form>

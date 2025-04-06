@@ -2,6 +2,7 @@ import InputError from "@/Components/InputError";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useLang } from "@/hooks/use-lang";
 import { Transition } from "@headlessui/react";
 import { Link, useForm, usePage } from "@inertiajs/react";
 import { FormEventHandler } from "react";
@@ -29,19 +30,18 @@ export default function UpdateProfileInformation({
         patch(route("profile.update"));
     };
 
+    const { t } = useLang("pages.profile.updateInfo");
     return (
         <section className={className}>
             <header>
-                <h2 className="text-lg font-medium">Profile Information</h2>
+                <h2 className="text-lg font-medium">{t(".title")}</h2>
 
-                <p className="mt-1 text-sm">
-                    Update your account's profile information and email address.
-                </p>
+                <p className="mt-1 text-sm">{t(".description")}</p>
             </header>
 
             <form onSubmit={submit} className="mt-6 space-y-6">
-                <div>
-                    <Label htmlFor="name">Name</Label>
+                <div className="flex flex-col gap-3">
+                    <Label htmlFor="name">{t(".inputLabel.userName")}</Label>
 
                     <Input
                         id="name"
@@ -56,8 +56,8 @@ export default function UpdateProfileInformation({
                     <InputError className="mt-2" message={errors.name} />
                 </div>
 
-                <div>
-                    <Label htmlFor="email">Email</Label>
+                <div className="flex flex-col gap-3">
+                    <Label htmlFor="email">{t(".inputLabel.email")}</Label>
 
                     <Input
                         id="email"
@@ -73,30 +73,29 @@ export default function UpdateProfileInformation({
                 </div>
 
                 {mustVerifyEmail && user.email_verified_at === null && (
-                    <div>
+                    <div className="flex flex-col gap-3">
                         <p className="mt-2 text-sm">
-                            Your email address is unverified.
+                            {t(".verifyEmail.warning")}
                             <Link
                                 href={route("verification.send")}
                                 method="post"
                                 as="button"
                                 className="rounded-md text-sm  underline  focus:outline-hidden focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                             >
-                                Click here to re-send the verification email.
+                                {t(".verifyEmail.desiredAction")}
                             </Link>
                         </p>
 
                         {status === "verification-link-sent" && (
                             <div className="mt-2 text-sm font-medium text-green-600">
-                                A new verification link has been sent to your
-                                email address.
+                                {t(".verifyEmail.verificationLinkSent")}
                             </div>
                         )}
                     </div>
                 )}
 
                 <div className="flex items-center gap-4">
-                    <Button disabled={processing}>Save</Button>
+                    <Button disabled={processing}>{t(".button.save")}</Button>
 
                     <Transition
                         show={recentlySuccessful}
@@ -105,7 +104,7 @@ export default function UpdateProfileInformation({
                         leave="transition ease-in-out"
                         leaveTo="opacity-0"
                     >
-                        <p className="text-sm">Saved.</p>
+                        <p className="text-sm">{t(".button.saved")}</p>
                     </Transition>
                 </div>
             </form>
