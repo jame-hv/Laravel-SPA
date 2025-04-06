@@ -1,4 +1,4 @@
-import InputError from "@/Components/InputError";
+import { InputError } from "@/components/errors/input-error";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -28,9 +28,7 @@ export default function ConfirmPassword() {
         <GuestLayout>
             <Head title={t(".pageTitle")} />
 
-            <div className="mb-4 text-sm text-gray-600">
-                {t(".description")}
-            </div>
+            <div className="mb-4 text-sm ">{t(".description")}</div>
 
             <div className={cn("flex flex-col gap-6")}>
                 <Card className="overflow-hidden p-0">

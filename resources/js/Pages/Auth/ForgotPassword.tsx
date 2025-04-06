@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import GuestLayout from "@/Layouts/GuestLayout";
 import { Head, useForm } from "@inertiajs/react";
 import { FormEventHandler } from "react";
-import InputError from "@/Components/InputError";
+import { InputError } from "@/components/errors/input-error";
 import { useLang } from "@/hooks/use-lang";
 
 export default function ForgotPassword({ status }: { status?: string }) {
@@ -25,9 +25,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
         <GuestLayout>
             <Head title={t(".pageTitle")} />
 
-            <div className="mb-4 text-sm text-gray-600">
-                {t(".description")}
-            </div>
+            <div className="mb-4 text-sm ">{t(".description")}</div>
 
             {status && (
                 <div className="mb-4 text-sm font-medium text-green-600">

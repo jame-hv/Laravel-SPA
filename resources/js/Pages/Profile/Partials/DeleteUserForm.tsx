@@ -1,12 +1,16 @@
-import DangerButton from "@/Components/DangerButton";
-import InputError from "@/Components/InputError";
-import InputLabel from "@/Components/InputLabel";
-import Modal from "@/Components/Modal";
-import SecondaryButton from "@/Components/SecondaryButton";
-import TextInput from "@/Components/TextInput";
 import { useLang } from "@/hooks/use-lang";
 import { useForm } from "@inertiajs/react";
 import { FormEventHandler, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogFooter,
+    DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export default function DeleteUserForm({
     className = "",
@@ -59,58 +63,77 @@ export default function DeleteUserForm({
                 <p className="mt-1 text-sm">{t(".description")}</p>
             </header>
 
-            <DangerButton onClick={confirmUserDeletion}>
+            <Button variant="destructive" onClick={confirmUserDeletion}>
                 {t(".button.deleteAccount")}
-            </DangerButton>
+            </Button>
 
-            <Modal show={confirmingUserDeletion} onClose={closeModal}>
-                <form onSubmit={deleteUser} className="p-6">
-                    <h2 className="text-lg font-medium text-gray-900">
-                        {t(".title")}
-                    </h2>
+            <Dialog
+                open={confirmingUserDeletion}
+                onOpenChange={(open) => !open && closeModal()}
+            >
+                <DialogContent>
+                    <form onSubmit={deleteUser} className="space-y-6">
+                        <DialogHeader>
+                            <h2 className="text-lg font-medium text-foreground">
+                                {t(".title")}
+                            </h2>
 
-                    <p className="mt-1 text-sm text-gray-600">
-                        {t(".description")}
-                    </p>
+                            <p className="text-sm text-muted-foreground">
+                                {t(".description")}
+                            </p>
+                        </DialogHeader>
 
-                    <div className="mt-6">
-                        <InputLabel
-                            htmlFor="password"
-                            value={t("common.password")}
-                            className="sr-only"
-                        />
+                        <div className="space-y-4">
+                            <div className="space-y-2">
+                                <Label htmlFor="password" className="sr-only">
+                                    {t("common.password")}
+                                </Label>
 
-                        <TextInput
-                            id="password"
-                            type="password"
-                            name="password"
-                            ref={passwordInput}
-                            value={data.password}
-                            onChange={(e) =>
-                                setData("password", e.target.value)
-                            }
-                            className="mt-1 block w-3/4"
-                            isFocused
-                            placeholder={t("common.password")}
-                        />
+                                <Input
+                                    id="password"
+                                    type="password"
+                                    name="password"
+                                    ref={passwordInput}
+                                    value={data.password}
+                                    onChange={(e) =>
+                                        setData("password", e.target.value)
+                                    }
+                                    className="w-full"
+                                    autoFocus
+                                    placeholder={t("common.password")}
+                                    aria-invalid={
+                                        errors.password ? "true" : "false"
+                                    }
+                                />
 
-                        <InputError
-                            message={errors.password}
-                            className="mt-2"
-                        />
-                    </div>
+                                {errors.password && (
+                                    <p className="text-sm text-destructive">
+                                        {errors.password}
+                                    </p>
+                                )}
+                            </div>
+                        </div>
 
-                    <div className="mt-6 flex justify-end">
-                        <SecondaryButton onClick={closeModal}>
-                            {t("common.close")}
-                        </SecondaryButton>
+                        <DialogFooter>
+                            <Button
+                                variant="outline"
+                                type="button"
+                                onClick={closeModal}
+                            >
+                                {t("common.close")}
+                            </Button>
 
-                        <DangerButton className="ms-3" disabled={processing}>
-                            {t(".button.deleteAccount")}
-                        </DangerButton>
-                    </div>
-                </form>
-            </Modal>
+                            <Button
+                                variant="destructive"
+                                type="submit"
+                                disabled={processing}
+                            >
+                                {t(".button.deleteAccount")}
+                            </Button>
+                        </DialogFooter>
+                    </form>
+                </DialogContent>
+            </Dialog>
         </section>
     );
 }

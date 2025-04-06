@@ -3,6 +3,7 @@ import { initReactI18next } from "react-i18next";
 
 import japanese from "./lang/ja.json";
 import english from "./lang/en.json";
+const locale = import.meta.env.VITE_APP_LOCALE ?? "en";
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -15,7 +16,7 @@ i18n.use(initReactI18next).init({
   },
 
   fallbackLng: "en",
-  lng: "ja",
+  lng: locale,
 
   interpolation: {
     escapeValue: false,

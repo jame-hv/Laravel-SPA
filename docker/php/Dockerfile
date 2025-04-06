@@ -1,7 +1,6 @@
 FROM php:8.2-fpm
 
-# Set working directory
-WORKDIR /var/www/html
+WORKDIR /var/www
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -9,27 +8,17 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
-    locales \
-    zip \
-    jpegoptim optipng pngquant gifsicle \
-    vim \
-    unzip \
-    git \
-    curl \
+    zip unzip curl git \
     libzip-dev \
     libonig-dev \
-    libicu-dev
+    libicu-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd pdo_mysql mbstring zip exif pcntl bcmath opcache \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Clear cache
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl bcmath opcache
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg
-RUN docker-php-ext-install gd
-
-# Install composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Composer
+RUN curl -sS https://getcomposer.org/installer | php && \
+    mv composer.phar /usr/local/bin/composer
 
 # Install node
 RUN curl -sL https://deb.nodesource.com/setup_22.x | bash -
@@ -37,9 +26,12 @@ RUN apt-get install -y nodejs
 RUN npm install npm@latest -g
 
 
-# Change current user to www-data
-USER www-data
+# Custom PHP config
+COPY local.ini /usr/local/etc/php/conf.d/local.ini
 
-# Expose port 9000 and start php-fpm server
-EXPOSE 9000
+# Entrypoint
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+ENTRYPOINT ["entrypoint.sh"]
 CMD ["php-fpm"]

@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
   # PHP Service
@@ -6,12 +6,14 @@ services:
     build:
       context: ./docker/php
       dockerfile: Dockerfile
-    container_name: laravel_app
+    container_name: ${APP_NAME}_app
     restart: unless-stopped
     tty: true
-    working_dir: /var/www/html
+    working_dir: /var/www
+    ports:
+      - "5173:5173" # Port for Vite dev server
     volumes:
-      - ./:/var/www/html
+      - ./:/var/www
       - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
@@ -19,37 +21,51 @@ services:
   # Nginx Service
   webserver:
     image: nginx:alpine
-    container_name: laravel_nginx
+    container_name: ${APP_NAME}_nginx
     restart: unless-stopped
     tty: true
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ./:/var/www/html
+      - ./:/var/www
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
     networks:
       - app-network
 
   # MySQL Service
-  db:
+  mysql:
     image: mysql:8.0
-    container_name: laravel_db
+    container_name: ${APP_NAME}_db
     restart: unless-stopped
     tty: true
     ports:
       - "3306:3306"
     environment:
-      MYSQL_DATABASE: laravel_crm
-      MYSQL_ROOT_PASSWORD: changeme
-      MYSQL_PASSWORD: changeme
-      MYSQL_USER: laravel
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
     volumes:
       - ./docker/mysql/data:/var/lib/mysql
       - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
     networks:
       - app-network
 
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: ${APP_NAME}_phpmyadmin
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: ${DB_PORT}
+      # Remove pre-filled credentials to force login
+      # Users must enter their MySQL credentials manually
+    networks:
+      - app-network
 # Docker Networks
 networks:
   app-network:
