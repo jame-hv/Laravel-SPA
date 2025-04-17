@@ -1,4 +1,4 @@
-import ApplicationLogo from "@/Components/ApplicationLogo";
+import ApplicationLogo from "@/components/application-logo";
 import { ThemeProvider } from "@/components/theme-provider";
 
 import { PropsWithChildren } from "react";

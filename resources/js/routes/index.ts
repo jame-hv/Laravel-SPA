@@ -1,102 +1,75 @@
+import { useLang } from "@/hooks/use-lang";
 import {
-  AudioWaveform,
   BookOpen,
-  Bot,
-  Command,
   GalleryVerticalEnd,
-  Settings2,
   SquareTerminal,
+  User,
 } from "lucide-react";
 
 export const data = {
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
-  ],
+  company: {
+    name: "ABC Inc",
+    logo: GalleryVerticalEnd,
+    plan: "Enterprise",
+  },
   navMain: [
     {
-      title: "Dashboard",
+      title: ".dashboard",
       url: route("dashboard"),
       icon: SquareTerminal,
       isActive: true,
     },
     {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
+      title: ".users",
+      url: route("users.index"),
+      icon: User,
     },
+
     {
-      title: "Documentation",
+      title: ".documentation.title",
       url: "#",
       icon: BookOpen,
       items: [
         {
-          title: "Introduction",
+          title: ".documentation.intro",
           url: "#",
         },
         {
-          title: "Get Started",
+          title: ".documentation.installation",
           url: "#",
         },
         {
-          title: "Tutorials",
+          title: ".documentation.manual",
           url: "#",
         },
         {
-          title: "Changelog",
+          title: ".documentation.changelog",
           url: "#",
         },
       ],
     },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-    },
+    // {
+    //   title: "Settings",
+    //   url: "#",
+    //   icon: Settings2,
+    //   items: [
+    //     {
+    //       title: "General",
+    //       url: "#",
+    //     },
+    //     {
+    //       title: "Team",
+    //       url: "#",
+    //     },
+    //     {
+    //       title: "Billing",
+    //       url: "#",
+    //     },
+    //     {
+    //       title: "Limits",
+    //       url: "#",
+    //     },
+    //   ],
+    // },
   ],
 };

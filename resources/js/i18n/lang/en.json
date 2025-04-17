@@ -7,12 +7,19 @@
         "resetPasswordLink": "Send to Email Address",
         "confirm": "Confirm",
         "resetPassword": "Reset Password",
+        "password": "Password",
         "confirmPasswordTitle": "User authentication is required to proceed. Please re-enter your password.",
-        "forgotPasswordTitle": "Forgot your password? Don't worry.\nEnter your registered email address, and we will send you an email with a link to reset your password.\nFollow the instructions to reset your password."
+        "forgotPasswordTitle": "Forgot your password? Don't worry.\nEnter your registered email address, and we will send you an email with a link to reset your password.\nFollow the instructions to reset your password.",
+        "and": "and"
     },
 
     "pages": {
+        "home": {
+            "login": "Login",
+            "register": "Register"
+        },
         "register": {
+            "pageTitle": "New Registration",
             "registerTitle": "New Registration",
             "inputLabel": {
                 "userName": "Username",
@@ -31,18 +38,27 @@
                 "phoneNumber": "123-4567-8910",
                 "postCode": "1000104",
                 "address": "Nozo, Oshima-machi, Tokyo",
-                "email": "example@gmail.com"
+                "email": "example@gmail.com",
+                "name": "Taro Yamada"
             },
             "uiText": {
                 "alreadyRegistered": "Already registered? Click here",
                 "notUseHyphen": "* Enter 7 consecutive digits without a hyphen (-)",
+                "haveAccount": "Already have an account?",
+                "loginLink": "Login",
+                "signUp": "Sign Up",
                 "termsOfUse": "Terms of Use",
-                "privacyPolicy": "Privacy Policy"
+                "privacyPolicy": "Privacy Policy",
+                "agreeToTerms": "By continuing, you agree to the",
+                "and": "and",
+                "agreeToTermsEnd": "."
             }
         },
 
         "login": {
+            "pageTitle": "Login",
             "loginTitle": "Login",
+            "loginDescription": "Enter your account information",
             "inputLabel": {
                 "email": "Email Address",
                 "password": "Password"
@@ -54,15 +70,215 @@
                 "loginBySocial": "Or log in with the options below",
                 "rememberMe": "Remember me",
                 "forgotPassword": "Forgot your password?",
-                "gotoRegister": "Sign Up"
+                "dontHaveAccount": "Don't have an account?",
+                "gotoRegister": "Sign Up",
+                "termsOfUse": "Terms of Use",
+                "privacyPolicy": "Privacy Policy",
+                "agreeToTerms": "By continuing, you agree to the",
+                "and": "and",
+                "agreeToTermsEnd": "."
+            },
+            "button": {
+                "login": "Login",
+                "loginWithGoogle": "Login with Google",
+                "loginWithFacebook": "Login with Facebook"
+            }
+        },
+
+        "confirmPassword": {
+            "pageTitle": "Confirm Password",
+            "description": "This is a secure area. Please confirm your password before continuing.",
+            "passwordLabel": "Password",
+            "confirmButton": "Confirm",
+            "inputLabel": {
+                "password": "Password"
+            },
+            "placeholder": {
+                "password": "Password"
+            },
+            "uiText": {},
+            "button": {
+                "confirmPassword": "Confirm"
+            }
+        },
+
+        "dashboard": {
+            "pageTitle": "Dashboard",
+            "totalUsers": "Total Users",
+            "fromLastMonth": "from last month",
+            "userGrowth": "User Growth Rate",
+            "userGrowthDescription": "Number of users over time",
+            "activitiesChart": {
+                "title": "Visitors",
+                "description": "Visitors over the last 3 months",
+                "label": {
+                    "desktop": "Desktop",
+                    "mobile": "Mobile"
+                },
+                "timeRange": {
+                    "last3Months": "Last 3 months",
+                    "last30Days": "Last 30 days",
+                    "last7Days": "Last 7 days"
+                }
+            }
+        },
+
+        "profile": {
+            "pageTitle": "Profile",
+            "updateInfo": {
+                "title": "Profile Information",
+                "description": "Update your account information",
+                "inputLabel": {
+                    "userName": "Username",
+                    "furigana": "Furigana",
+                    "phoneNumber": "Phone Number",
+                    "postCode": "Postal Code",
+                    "address": "Address",
+                    "addressDetail": "Detailed Address",
+                    "email": "Email Address"
+                },
+                "verifyEmail": {
+                    "warning": "Email verification is required",
+                    "desiredAction": "Click here to verify your email address.",
+                    "verificationLinkSent": "A verification link has been sent to your email address. Please check your email."
+                },
+                "button": {
+                    "save": "Save",
+                    "saved": "Saved"
+                }
+            },
+            "updatePasswordForm": {
+                "title": "Change Password",
+                "description": "Ensure your account uses a long, random password to stay secure.",
+                "currentPassword": "Current Password",
+                "newPassword": "New Password",
+                "confirmPassword": "Confirm Password",
+                "button": {
+                    "save": "Save"
+                },
+                "saved": "Saved"
+            },
+            "deleteUserForm": {
+                "title": "Delete Account",
+                "description": "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data that you wish to retain.",
+                "button": {
+                    "deleteAccount": "Delete Account"
+                },
+                "deleted": "Account has been deleted."
             }
         },
 
         "verifyEmail": {
+            "pageTitle": "Verify Email",
             "title": "Thank you for signing up.\nBefore you get started, please click the link sent to your email to verify your email address.\nIf you have not received the email, we can resend it.",
+            "description": "Thank you for signing up. Before getting started, please click the link sent to your email to verify your email address. If you haven't received the email, we can resend it.",
             "resend": "Resend Email",
+            "resendButton": "Resend verification email",
             "verificationLinkSent": "A new verification link has been sent to the email address provided during registration.",
             "logout": "Log Out"
+        },
+
+        "forgotPassword": {
+            "pageTitle": "Forgot Password",
+            "description": "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link.",
+            "emailLabel": "Email Address",
+            "resetButton": "Send Password Reset Link",
+            "terms": {
+                "agreement": "By continuing, you agree to the",
+                "termsOfService": "Terms of Use",
+                "and": "and",
+                "privacyPolicy": "Privacy Policy",
+                "agreementEnd": "."
+            }
+        },
+
+        "resetPassword": {
+            "pageTitle": "Reset Password",
+            "description": "Please set your new password.",
+            "inputLabel": {
+                "email": "Email Address",
+                "password": "New Password",
+                "confirmPassword": "Confirm New Password"
+            },
+            "placeholder": {
+                "password": "New Password",
+                "confirmPassword": "Confirm New Password"
+            },
+            "uiText": {
+                "resetPasswordSuccess": "Password has been successfully reset. Please login."
+            }
+        },
+
+        "users": {
+            "pageTitle": "Users",
+            "description": "Manage users",
+            "table": {
+                "userName": "Username",
+                "email": "Email Address",
+                "phoneNumber": "Phone Number",
+                "createdAt": "Registration Date",
+                "updatedAt": "Update Date",
+                "actions": "Actions"
+            },
+            "button": {
+                "addUser": "Add User",
+                "edit": "Edit",
+                "delete": "Delete"
+            },
+            "dialog": {
+                "createUser": "Create User",
+                "deleteConfirm": "Are you sure you want to delete this user?"
+            },
+            "userForm": {
+                "pageTitle": "Edit User",
+                "inputLabel": {
+                    "userName": "Username",
+                    "furigana": "Furigana",
+                    "phoneNumber": "Phone Number",
+                    "postCode": "Postal Code",
+                    "address": "Address",
+                    "addressDetail": "Detailed Address",
+                    "email": "Email Address",
+                    "password": "Password",
+                    "confirmPassword": "Confirm Password"
+                },
+                "leaveBlankText": "Leave blank to keep the current password",
+                "save": "Save",
+                "saving": "Saving..."
+            },
+            "message": {
+                "createSuccess": "User created successfully.",
+                "updateSuccess": "User updated successfully.",
+                "deleteSuccess": "User deleted successfully."
+            }
+        }
+    },
+
+    "sidebar": {
+        "company": {
+            "companyInfo": "Company Info",
+            "home": "Home"
+        },
+        "groupLabel": {
+            "general": "General"
+        },
+        "navMain": {
+            "dashboard": "Dashboard",
+            "users": "Users",
+            "documentation": {
+                "title": "Documentation",
+                "intro": "Introduction",
+                "installation": "Installation",
+                "manual": "Manual",
+                "changelog": "Changelog"
+            }
+        },
+        "navUser": {
+            "upgrade": "Upgrade to Pro",
+            "profile": "Profile",
+            "billing": "Billing",
+            "notifications": "Notifications",
+            "logout": "Logout"
         }
     },
 
