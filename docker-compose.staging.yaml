@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # PHP Service (optimized for staging without Nginx container)
+  app:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+      args:
+        - APP_ENV=staging
+    container_name: ${APP_NAME}_app_stg
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www
+    ports:
+      - "9000:9000" # Expose PHP-FPM port to host
+    volumes:
+      - ./:/var/www
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - app-network
+    environment:
+      - APP_ENV=staging
+      - APP_DEBUG=false
+
+  # MySQL Service
+  mysql:
+    image: mysql:8.0
+    container_name: ${APP_NAME}_db_stg
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - app-network
+
+# Docker Networks
+networks:
+  app-network:
+    driver: bridge
