@@ -42,7 +42,7 @@ export APP_NAME_COLOR="${APP_NAME}_${NEW_COLOR}"
 export CONTAINER_NAME="${APP_NAME}_app_stg_${NEW_COLOR}"
 
 # Modify docker compose.staging.yaml to use the new container name
-sed "s/container_name: \${APP_NAME}_app_stg/container_name: ${CONTAINER_NAME}/g" docker compose.staging.yaml > docker compose.staging.${NEW_COLOR}.yaml
+sed "s/container_name: \${APP_NAME}_app_stg/container_name: ${CONTAINER_NAME}/g" docker-compose.staging.yaml > docker-compose.staging.${NEW_COLOR}.yaml
 
 # Build and start the new environment
 echo -e "${YELLOW}Building Docker images for ${NEW_COLOR} environment...${NC}"
