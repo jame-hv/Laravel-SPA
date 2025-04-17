@@ -1,4 +1,3 @@
-import PrimaryButton from "@/Components/PrimaryButton";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useLang } from "@/hooks/use-lang";
@@ -26,7 +25,7 @@ export default function VerifyEmail({ status }: { status?: string }) {
                 <Card className="overflow-hidden p-0">
                     <CardContent className="grid p-0 ">
                         <div className="p-6 md:p-8">
-                            <div className="mb-4 text-sm text-gray-600">
+                            <div className="mb-4 text-sm ">
                                 {t(".description")}
                             </div>
 
@@ -46,7 +45,7 @@ export default function VerifyEmail({ status }: { status?: string }) {
                                         href={route("logout")}
                                         method="post"
                                         as="button"
-                                        className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                        className="rounded-md text-sm underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                     >
                                         {t(".logout")}
                                     </Link>

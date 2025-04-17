@@ -4,10 +4,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import GuestLayout from "@/Layouts/GuestLayout";
-import { Head, Link, useForm } from "@inertiajs/react";
-import { Loader } from "lucide-react";
+import { Head, useForm } from "@inertiajs/react";
 import { FormEventHandler } from "react";
-import InputError from "@/Components/InputError";
+import { InputError } from "@/components/errors/input-error";
 import { useLang } from "@/hooks/use-lang";
 
 export default function Register() {
@@ -134,7 +133,6 @@ export default function Register() {
                                     />
                                 </div>
                                 <Button type="submit" className="w-full">
-                                    {processing && <Loader />}
                                     {t(".uiText.signUp")}
                                 </Button>
 

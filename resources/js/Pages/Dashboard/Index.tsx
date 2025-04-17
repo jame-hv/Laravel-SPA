@@ -30,7 +30,6 @@ interface Stats {
     }>;
 }
 export default function Dashboard({ stats }: PageProps<{ stats: Stats }>) {
-    console.log(stats);
     const { t } = useLang("pages.dashboard");
     return (
         <AuthenticatedLayout

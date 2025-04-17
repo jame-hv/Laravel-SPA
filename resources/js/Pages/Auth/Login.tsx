@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import GuestLayout from "@/Layouts/GuestLayout";
 import { Head, useForm, usePage } from "@inertiajs/react";
 import { FormEventHandler } from "react";
-import InputError from "@/Components/InputError";
+import { InputError } from "@/components/errors/input-error";
 import { useLang } from "@/hooks/use-lang";
 
 export default function Login({

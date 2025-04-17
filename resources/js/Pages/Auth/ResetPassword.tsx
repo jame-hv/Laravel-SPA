@@ -1,5 +1,4 @@
-import InputError from "@/Components/InputError";
-import PrimaryButton from "@/Components/PrimaryButton";
+import { InputError } from "@/components/errors/input-error";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
