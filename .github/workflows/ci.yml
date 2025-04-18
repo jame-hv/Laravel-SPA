@@ -37,11 +37,14 @@ jobs:
       - name: Generate app key
         run: php artisan key:generate
 
-      - name: Install Npm dependencies
-        run: npm install
+      - name: Install pnpm dependencies
+        run: npm install pnpm -g
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Compile assets
-        run: npm run build
+        run: pnpm run build
 
       - name: Run Laravel Pint for code style
         run: ./vendor/bin/pint --test
