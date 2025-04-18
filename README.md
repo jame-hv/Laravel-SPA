@@ -1,6 +1,6 @@
 # Laravel SPA
 
-A personal template built with Laravel, React, TypeScript, and Tailwind CSS. This project provides a development environment with Docker.
+A modern single-page application template built with Laravel, React, TypeScript, and Tailwind CSS. This project provides a complete development environment with Docker for seamless setup and deployment.
 
 ## 🚀 Tech Stack
 
@@ -34,33 +34,26 @@ A personal template built with Laravel, React, TypeScript, and Tailwind CSS. Thi
 ### 1. Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/jame-hv/laravel-spa.git
 cd laravel-spa
 ```
 
-### 2. Configure environment variables
+### 2. Set up environment variables
 
 ```bash
 cp .env.example .env
 ```
 
-### 3. Start Docker containers
+### 3. Run the setup script
 
 ```bash
-docker-compose up -d
+./setup.sh
 ```
-
-This will start all services defined in docker-compose.yaml:
-
--   PHP application (`app`)
--   Nginx web server (`webserver`)
--   MySQL database (`mysql`)
--   PHPMyAdmin (`phpmyadmin`)
 
 ### 4. Access the app container bash shell
 
 ```bash
-docker-compose exec app bash
+docker compose exec app bash
 ```
 
 Once inside the container shell, you can run the following commands:
@@ -115,10 +108,11 @@ When you're done, you can exit the container shell by typing `exit`.
 
 -   **Laravel Application**: [http://localhost](http://localhost)
 -   **PHPMyAdmin**: [http://localhost:8081](http://localhost:8081)
-    -   Server: mysql
-    -   Username: admin (from .env)
-    -   Password: changeme (from .env)
--   **Vite Dev Server**: [http://localhost:5173](http://localhost:5173)
+    -   **Server**: mysql
+    -   **Username**: admin (as specified in your .env file)
+    -   **Password**: changeme (as specified in your .env file)
+
+> **Note**: For production environments, always use strong, unique passwords.
 
 ## 📁 Project Structure
 
@@ -146,13 +140,18 @@ When you're done, you can exit the container shell by typing `exit`.
 
 ## 🧑‍💻 Development Workflow
 
-1. Make changes to your code
-2. For frontend changes, the Vite dev server will automatically refresh
-3. For backend changes, they will be immediately available due to volume mounting
+1. Make code changes in your preferred editor
+2. Frontend changes are automatically refreshed by the Vite dev server
+3. Backend changes are immediately available thanks to volume mounting
+4. Test your application with PHPUnit or Pest
+5. Use Git for version control and feature branches
 
 ## 🔧 Useful Commands
 
 ```bash
+# Rebuild and start containers
+docker compose up --build
+
 # Restart containers
 docker compose restart
 
@@ -160,7 +159,7 @@ docker compose restart
 docker compose logs -f
 
 # Access MySQL CLI
-docker-compose exec mysql mysql -u admin -p
+docker compose exec mysql mysql -u admin -p
 ```
 
 ## 📚 Additional Resources
