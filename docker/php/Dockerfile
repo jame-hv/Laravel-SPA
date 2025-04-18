@@ -23,11 +23,11 @@ RUN curl -sS https://getcomposer.org/installer | php && \
 # Install node
 RUN curl -sL https://deb.nodesource.com/setup_22.x | bash -
 RUN apt-get install -y nodejs
-RUN npm install npm@latest -g
+RUN npm install pnpm -g
 
 
 # Custom PHP config
-COPY local.ini /usr/local/etc/php/conf.d/local.ini
+COPY php.ini /usr/local/etc/php/conf.d/php.ini
 
 # Entrypoint
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh

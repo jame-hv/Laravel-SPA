@@ -11,8 +11,9 @@ import { Company } from "./Company";
 import { NavMain } from "./NavMain";
 import { NavUser } from "./NavUser";
 import { data } from "@/routes";
+import { User } from "@/types/models";
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-    const user = usePage().props.auth.user;
+    const user = usePage<{ auth: { user: User } }>().props.auth.user;
 
     return (
         <Sidebar collapsible="icon" {...props}>
