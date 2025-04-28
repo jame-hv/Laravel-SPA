@@ -45,7 +45,7 @@ check_prerequisites() {
         print_success "Docker is installed"
     fi
 
-    if ! command_exists docker-compose; then
+    if ! command_exists docker compose; then
         print_error "Docker Compose is not installed. Please install Docker Compose."
         prerequisite_missing=true
     else
@@ -76,7 +76,7 @@ start_docker() {
     print_section "Starting Docker containers"
 
     print_info "Building and starting containers (this may take a while)..."
-    if docker-compose up -d; then
+    if docker compose up -d; then
         print_success "Docker containers started successfully"
     else
         print_error "Failed to start Docker containers"
@@ -89,7 +89,7 @@ install_php_dependencies() {
     print_section "Installing PHP dependencies"
 
     print_info "Running composer install in the container..."
-    if docker-compose exec -T app composer install; then
+    if docker compose exec -T app composer install; then
         print_success "PHP dependencies installed successfully"
     else
         print_error "Failed to install PHP dependencies"
@@ -102,7 +102,7 @@ generate_app_key() {
     print_section "Generating application key"
 
     print_info "Running artisan key:generate in the container..."
-    if docker-compose exec -T app php artisan key:generate --ansi; then
+    if docker compose exec -T app php artisan key:generate --ansi; then
         print_success "Application key generated successfully"
     else
         print_error "Failed to generate application key"
@@ -117,7 +117,7 @@ run_migrations() {
     read -p "Do you want to run database migrations? (y/n): " migrate_choice
     if [[ $migrate_choice == "y" || $migrate_choice == "Y" ]]; then
         print_info "Running artisan migrate in the container..."
-        if docker-compose exec -T app php artisan migrate; then
+        if docker compose exec -T app php artisan migrate; then
             print_success "Database migrations completed successfully"
         else
             print_error "Failed to run database migrations"
@@ -135,7 +135,7 @@ seed_database() {
     read -p "Do you want to seed the database? (y/n): " seed_choice
     if [[ $seed_choice == "y" || $seed_choice == "Y" ]]; then
         print_info "Running artisan db:seed in the container..."
-        if docker-compose exec -T app php artisan db:seed; then
+        if docker compose exec -T app php artisan db:seed; then
             print_success "Database seeded successfully"
         else
             print_error "Failed to seed the database"
@@ -151,7 +151,7 @@ install_frontend_dependencies() {
     print_section "Installing frontend dependencies"
 
     print_info "Installing frontend dependencies using PNPM..."
-    if docker-compose exec -T app pnpm install; then
+    if docker compose exec -T app pnpm install; then
         print_success "Frontend dependencies installed successfully"
 
     else
@@ -168,7 +168,7 @@ build_frontend_assets() {
 
     if [[ $build_choice == "prod" || $build_choice == "production" ]]; then
         print_info "Building frontend assets for production..."
-        if docker-compose exec -T app pnpm run build; then
+        if docker compose exec -T app pnpm run build; then
             print_success "Frontend assets built successfully for production"
         else
             print_error "Failed to build frontend assets"
@@ -177,7 +177,7 @@ build_frontend_assets() {
     else
         print_info "Starting frontend development server..."
         print_info "Press Ctrl+C to stop the development server when done."
-        if docker-compose exec app pnpm run dev; then
+        if docker compose exec app pnpm run dev; then
             print_success "Frontend development server stopped"
         else
             print_error "Failed to start frontend development server"
@@ -200,9 +200,9 @@ display_access_info() {
     echo -e "- Vite Dev Server (if running): ${GREEN}http://localhost:5173${NC}"
 
     echo -e "\n${YELLOW}Useful commands:${NC}"
-    echo -e "- Docker Container Shell: ${GREEN}docker-compose exec app bash${NC}"
-    echo -e "- Restart Containers: ${GREEN}docker-compose restart${NC}"
-    echo -e "- View Logs: ${GREEN}docker-compose logs -f${NC}"
+    echo -e "- Docker Container Shell: ${GREEN}docker compose exec app bash${NC}"
+    echo -e "- Restart Containers: ${GREEN}docker compose restart${NC}"
+    echo -e "- View Logs: ${GREEN}docker compose logs -f${NC}"
 }
 
 # Main script execution
