@@ -1,0 +1,6 @@
+import{j as e}from"./app-BG4fwSx8.js";import{B as t}from"./button-yqLYAKCU.js";import{I as s}from"./input-Dgt2dD8u.js";import{c as a}from"./createLucideIcon-D720LfK-.js";import"./index-mFuCRuUu.js";import"./utils-DjqsqOe8.js";/**
+ * @license lucide-react v0.485.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const r=[["path",{d:"M5 12h14",key:"1ays0h"}],["path",{d:"m12 5 7 7-7 7",key:"xquz4c"}]],x=a("arrow-right",r);function n(){return e.jsx("section",{className:"w-full py-20 bg-rose-500",children:e.jsx("div",{className:"container mx-auto px-4",children:e.jsxs("div",{className:"max-w-3xl mx-auto text-center",children:[e.jsx("h2",{className:"text-3xl md:text-5xl font-bold mb-6 text-white",children:"次のプロジェクトを始める準備はできましたか？"}),e.jsx("p",{className:"text-xl text-white/90 mb-8",children:"すでに数千人の開発者が私たちの技術で革新的なアプリケーションを構築しています。"}),e.jsxs("div",{className:"flex flex-col sm:flex-row gap-4 justify-center mb-8",children:[e.jsx(s,{type:"email",placeholder:"メールアドレスを入力",className:"bg-white/10 border-white/20 text-white placeholder:text-white/60 max-w-md"}),e.jsxs(t,{className:"bg-white text-rose-500 hover:bg-white/90",children:["始める ",e.jsx(x,{className:"ml-2 h-4 w-4"})]})]}),e.jsx("p",{className:"text-sm text-white/70",children:"クレジットカード不要。無料で始められます。"})]})})})}export{n as Cta};
